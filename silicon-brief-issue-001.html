@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Silicon Brief — Issue 001</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0A0A0A;
+    color: #E8E4DC;
+    font-family: 'Source Serif 4', Georgia, serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  .page {
+    max-width: 740px;
+    margin: 0 auto;
+    border-left: 0.5px solid #1E1E1E;
+    border-right: 0.5px solid #1E1E1E;
+    min-height: 100vh;
+  }
+
+  /* COVER */
+  .cover {
+    border-bottom: 1px solid #C8A94A;
+    padding: 52px 48px 40px;
+    text-align: center;
+    position: relative;
+  }
+
+  .cover-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 48px;
+  }
+
+  .cover-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: #4A4540;
+    text-transform: uppercase;
+    line-height: 1.8;
+    text-align: left;
+  }
+
+  .cover-meta.right { text-align: right; }
+
+  .wordmark {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    font-weight: 900;
+    color: #E8E4DC;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .wordmark em { color: #C8A94A; font-style: normal; }
+
+  .wordmark-sub {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    color: #4A4540;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .issue-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 0;
+  }
+
+  .issue-line { height: 0.5px; width: 60px; background: #C8A94A; opacity: 0.3; }
+
+  .issue-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: #C8A94A;
+    text-transform: uppercase;
+  }
+
+  /* HERO */
+  .hero {
+    padding: 48px 48px 0;
+    border-bottom: 0.5px solid #1E1E1E;
+    padding-bottom: 40px;
+  }
+
+  .kicker {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: #C8A94A;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+
+  .headline {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #E8E4DC;
+    margin-bottom: 20px;
+  }
+
+  .deck {
+    font-size: 17px;
+    font-style: italic;
+    font-weight: 300;
+    color: #8A8580;
+    line-height: 1.6;
+    border-left: 2px solid #C8A94A;
+    padding-left: 18px;
+  }
+
+  /* STATS */
+  .stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 0.5px solid #1E1E1E;
+  }
+
+  .stat {
+    padding: 28px 24px;
+    text-align: center;
+    border-right: 0.5px solid #1E1E1E;
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #C8A94A;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .stat-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    color: #4A4540;
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* BODY */
+  .body { padding: 40px 48px; }
+
+  .body p {
+    font-size: 15px;
+    line-height: 1.85;
+    color: #C8C4BC;
+    font-weight: 300;
+    margin-bottom: 22px;
+  }
+
+  .body p strong { color: #C8A94A; font-weight: 500; }
+
+  .section-head {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: #C8A94A;
+    text-transform: uppercase;
+    margin: 36px 0 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-head::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: #1E1E1E;
+  }
+
+  /* CALLOUT */
+  .callout {
+    background: #0F0C00;
+    border: 0.5px solid #3A2E00;
+    padding: 22px 26px;
+    margin: 28px 0;
+  }
+
+  .callout-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: #C8A94A;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .callout p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #A09870;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  /* SIGNAL GRID */
+  .signal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 24px 0;
+  }
+
+  .signal {
+    background: #0D0D0D;
+    border: 0.5px solid #1E1E1E;
+    border-left: 3px solid #4A9E7C;
+    padding: 16px 18px;
+  }
+
+  .signal.red { border-left-color: #C05050; }
+
+  .signal-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: #4A9E7C;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .signal.red .signal-tag { color: #C05050; }
+
+  .signal p {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #8A8580;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  /* BOTTOM LINE */
+  .bottom-line {
+    background: #080F0A;
+    border: 0.5px solid #1A3A22;
+    padding: 22px 26px;
+    margin: 28px 0;
+  }
+
+  .bottom-line-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: #4A9E7C;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .bottom-line p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #C8C4BC;
+    margin: 0;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid #1E1E1E;
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: #3A3530;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+  }
+
+  .footer-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    color: #C8A94A;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    border: 0.5px solid #3A2E00;
+    padding: 8px 16px;
+  }
+
+  .footer-link:hover { background: #1A1200; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-top">
+      <div class="cover-meta">
+        April 19, 2026<br>
+        Weekly Edition
+      </div>
+      <div class="cover-meta right">
+        AI Investing<br>
+        Intelligence
+      </div>
+    </div>
+
+    <div class="wordmark">The <em>Silicon</em> Brief</div>
+    <div class="wordmark-sub">Where smart money watches AI</div>
+
+    <div class="issue-display">
+      <div class="issue-line"></div>
+      <div class="issue-text">Issue No. 001</div>
+      <div class="issue-line"></div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="kicker">Deep Dive</div>
+    <div class="headline">The 74/20 Rule: Why Most AI Stocks Won't Win</div>
+    <div class="deck">PwC just surveyed 1,217 executives across 25 sectors. The finding should change how you pick AI companies — and most investors haven't seen it yet.</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <span class="stat-num">74%</span>
+      <span class="stat-label">of AI economic value captured by top performers</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">7.2×</span>
+      <span class="stat-label">more AI-driven returns vs. average competitor</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">2.8×</span>
+      <span class="stat-label">faster at removing humans from decisions</span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+    <p>Last week PwC dropped one of the most important data points of 2026 for anyone investing in the AI trade. <strong>74% of AI's economic value is going to just 20% of companies.</strong> Not because the other 80% aren't spending — they are. The problem is what they're spending on.</p>
+
+    <p>The study surveyed 1,217 senior executives at large publicly traded companies. What separated the winners from everyone else wasn't how much AI they deployed. It was <strong>where they pointed it.</strong></p>
+
+    <div class="callout">
+      <div class="callout-label">Key Finding</div>
+      <p>The majority of companies are using AI to cut costs. The winning 20% are using AI to generate entirely new revenue streams — often by moving into adjacent industries entirely. PwC calls this "industry convergence," and it's the single strongest predictor of AI-driven financial performance ahead of any efficiency metric.</p>
+    </div>
+
+    <div class="section-head">What this means for your portfolio</div>
+
+    <p>This is the filter. When you're evaluating any AI company, ask one question before anything else: <strong>is AI changing what they sell, or just how they operate?</strong></p>
+
+    <p>Operational AI is a one-time efficiency unlock. Investors price it in fast, and then it's baked. Revenue-generating AI — where the product itself becomes fundamentally different because of AI — compounds. That's where multiple expansion happens.</p>
+
+    <div class="signal-grid">
+      <div class="signal">
+        <div class="signal-tag">Buy Signal</div>
+        <p>AI is embedded in the core product or enables the company to sell something it couldn't before. Think new customer segments, new pricing models, new service lines.</p>
+      </div>
+      <div class="signal red">
+        <div class="signal-tag">Caution</div>
+        <p>AI used for internal automation only — marketing copy, support tickets, internal tools. Real but limited. Already reflected in valuations at most companies.</p>
+      </div>
+      <div class="signal">
+        <div class="signal-tag">Watch For</div>
+        <p>Companies crossing industry lines using AI. A healthcare company selling financial data products. A logistics firm becoming a supply chain intelligence provider.</p>
+      </div>
+      <div class="signal red">
+        <div class="signal-tag">Red Flag</div>
+        <p>"AI-powered" in the press release but no AI line item in the revenue breakdown. Every company claims AI. The ones winning have AI in the P&L — not just the deck.</p>
+      </div>
+    </div>
+
+    <div class="section-head">The metric to start using now</div>
+
+    <p>Top performers track decisions made without human intervention and actively grow that rate at <strong>2.8× the pace of laggards.</strong> Look for companies reporting automation metrics tied to cost-per-transaction or throughput — those are building something defensible.</p>
+
+    <p>One more signal worth flagging: winners are <strong>1.7× more likely to have a formal responsible AI governance framework.</strong> That's not compliance theater — trust enables automation, and automation at scale is where the returns compound.</p>
+
+    <div class="bottom-line">
+      <div class="bottom-line-label">The Bottom Line</div>
+      <p>The AI trade is not monolithic. The 74/20 split isn't a footnote — it's the investment thesis. Your job is to find which 20% a company belongs to before the market does. The signal is always the same: does AI change what they sell, or just how they run?</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-left">
+      THE SILICON BRIEF — ISSUE 001<br>
+      © 2026 · AI INVESTING INTELLIGENCE
+    </div>
+    <a class="footer-link" href="https://whop.com/checkout/plan_xu4IB2UsllMEx">SUBSCRIBE FREE →</a>
+  </div>
+
+</div>
+</body>
+</html>
