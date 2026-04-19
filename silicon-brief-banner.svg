@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap');
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+
+  <!-- Subtle side borders -->
+  <rect x="60" y="0" width="0.5" height="630" fill="#1E1E1E"/>
+  <rect x="1139.5" y="0" width="0.5" height="630" fill="#1E1E1E"/>
+
+  <!-- Top gold rule -->
+  <rect x="60" y="72" width="1080" height="1" fill="#C8A94A"/>
+
+  <!-- Bottom gold rule -->
+  <rect x="60" y="557" width="1080" height="1" fill="#C8A94A"/>
+
+  <!-- Top-left meta -->
+  <text x="80" y="52" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#4A4540" letter-spacing="3" text-transform="uppercase">INTELLIGENCE FOR THE AI ERA</text>
+
+  <!-- Top-right meta -->
+  <text x="1120" y="52" font-family="'IBM Plex Mono', monospace" font-size="11" fill="#4A4540" letter-spacing="3" text-anchor="end">ISSUE 001</text>
+
+  <!-- Wordmark: "The" -->
+  <text x="600" y="300" font-family="Georgia, serif" font-size="96" font-weight="700" fill="#E8E4DC" text-anchor="middle" dominant-baseline="middle">
+    <tspan>The </tspan><tspan fill="#C8A94A" font-style="italic">Silicon</tspan><tspan> Brief</tspan>
+  </text>
+
+  <!-- Subhead -->
+  <text x="600" y="370" font-family="'IBM Plex Mono', monospace" font-size="13" fill="#4A4540" letter-spacing="8" text-anchor="middle">SIGNAL OVER NOISE</text>
+
+  <!-- Decorative divider lines around wordmark -->
+  <rect x="60" y="390" width="460" height="0.5" fill="#C8A94A" opacity="0.25"/>
+  <rect x="680" y="390" width="460" height="0.5" fill="#C8A94A" opacity="0.25"/>
+
+  <!-- Diamond center -->
+  <polygon points="600,383 607,390 600,397 593,390" fill="#C8A94A" opacity="0.6"/>
+
+  <!-- Tagline -->
+  <text x="600" y="460" font-family="Georgia, serif" font-size="18" font-style="italic" fill="#6B6460" text-anchor="middle">Curated dispatches from the frontier of artificial intelligence</text>
+
+  <!-- Bottom URL -->
+  <text x="600" y="590" font-family="'IBM Plex Mono', monospace" font-size="12" fill="#C8A94A" letter-spacing="3" text-anchor="middle" opacity="0.7">j72544699-cmyk.github.io/the-silicon-brief</text>
+
+  <!-- Corner ornaments -->
+  <text x="80" y="590" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#2A2520" letter-spacing="2">VOL. I</text>
+  <text x="1120" y="590" font-family="'IBM Plex Mono', monospace" font-size="10" fill="#2A2520" letter-spacing="2" text-anchor="end">2025</text>
+</svg>
