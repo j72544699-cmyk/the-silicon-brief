@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Silicon Brief — Issue 002</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #0A0A0A; color: #E8E4DC; font-family: 'Source Serif 4', Georgia, serif; min-height: 100vh; padding: 0; }
+  .page { max-width: 740px; margin: 0 auto; border-left: 0.5px solid #1E1E1E; border-right: 0.5px solid #1E1E1E; min-height: 100vh; }
+
+  /* COVER */
+  .cover { border-bottom: 1px solid #C8A94A; padding: 52px 48px 40px; text-align: center; }
+  .cover-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+  .cover-meta { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: #4A4540; text-transform: uppercase; line-height: 1.8; text-align: left; }
+  .cover-meta.right { text-align: right; }
+  .wordmark { font-family: 'Playfair Display', serif; font-size: 48px; font-weight: 900; color: #E8E4DC; letter-spacing: -0.01em; line-height: 1; margin-bottom: 4px; }
+  .wordmark em { color: #C8A94A; font-style: normal; }
+  .wordmark-sub { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.4em; color: #4A4540; text-transform: uppercase; margin-bottom: 32px; }
+  .issue-display { display: flex; align-items: center; justify-content: center; gap: 24px; }
+  .issue-line { height: 0.5px; width: 60px; background: #C8A94A; opacity: 0.3; }
+  .issue-text { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #C8A94A; text-transform: uppercase; }
+
+  /* HERO */
+  .hero { padding: 48px 48px 40px; border-bottom: 0.5px solid #1E1E1E; }
+  .kicker { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.25em; color: #C8A94A; text-transform: uppercase; margin-bottom: 16px; }
+  .headline { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; line-height: 1.15; color: #E8E4DC; margin-bottom: 20px; }
+  .deck { font-size: 17px; font-style: italic; font-weight: 300; color: #8A8580; line-height: 1.6; border-left: 2px solid #C8A94A; padding-left: 18px; }
+
+  /* STATS */
+  .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; border-bottom: 0.5px solid #1E1E1E; }
+  .stat { padding: 28px 24px; text-align: center; border-right: 0.5px solid #1E1E1E; }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #C8A94A; display: block; margin-bottom: 6px; }
+  .stat-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: #4A4540; text-transform: uppercase; line-height: 1.5; }
+
+  /* BODY */
+  .body { padding: 40px 48px; }
+  .body p { font-size: 15px; line-height: 1.85; color: #C8C4BC; font-weight: 300; margin-bottom: 22px; }
+  .body p strong { color: #C8A94A; font-weight: 500; }
+  .section-head { font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: 0.25em; color: #C8A94A; text-transform: uppercase; margin: 36px 0 20px; display: flex; align-items: center; gap: 12px; }
+  .section-head::after { content: ''; flex: 1; height: 0.5px; background: #1E1E1E; }
+
+  /* CALLOUT */
+  .callout { background: #0F0C00; border: 0.5px solid #3A2E00; padding: 22px 26px; margin: 28px 0; }
+  .callout-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: #C8A94A; text-transform: uppercase; margin-bottom: 10px; }
+  .callout p { font-size: 14px; line-height: 1.75; color: #A09870; margin: 0; font-weight: 300; }
+
+  /* SIGNAL GRID */
+  .signal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 24px 0; }
+  .signal { background: #0D0D0D; border: 0.5px solid #1E1E1E; border-left: 3px solid #4A9E7C; padding: 16px 18px; }
+  .signal.red { border-left-color: #C05050; }
+  .signal-tag { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.15em; color: #4A9E7C; text-transform: uppercase; margin-bottom: 8px; }
+  .signal.red .signal-tag { color: #C05050; }
+  .signal p { font-size: 13px; line-height: 1.65; color: #8A8580; margin: 0; font-weight: 300; }
+
+  /* BOTTOM LINE */
+  .bottom-line { background: #080F0A; border: 0.5px solid #1A3A22; padding: 22px 26px; margin: 28px 0; }
+  .bottom-line-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: #4A9E7C; text-transform: uppercase; margin-bottom: 10px; }
+  .bottom-line p { font-size: 15px; line-height: 1.75; color: #C8C4BC; margin: 0; font-weight: 300; }
+
+  /* SIGNALS SECTION */
+  .signals-section { margin: 28px 0; }
+  .signals-label { font-family: 'IBM Plex Mono', monospace; font-size: 9px; letter-spacing: 0.2em; color: #4A4540; text-transform: uppercase; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 0.5px solid #1E1E1E; }
+  .signal-bullet { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+  .bullet-dot { width: 6px; height: 6px; background: #C8A94A; transform: rotate(45deg); margin-top: 6px; flex-shrink: 0; }
+  .bullet-text { font-size: 13px; line-height: 1.7; color: #8A8580; font-weight: 300; }
+  .bullet-text strong { color: #C8A94A; font-weight: 500; }
+
+  /* FOOTER */
+  .footer { border-top: 1px solid #1E1E1E; padding: 24px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-left { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #3A3530; letter-spacing: 0.1em; line-height: 1.8; }
+  .footer-link { font-family: 'IBM Plex Mono', monospace; font-size: 9px; color: #C8A94A; letter-spacing: 0.1em; text-decoration: none; border: 0.5px solid #3A2E00; padding: 8px 16px; }
+  .footer-link:hover { background: #1A1200; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <div class="cover-top">
+      <div class="cover-meta">April 27, 2026<br>Weekly Edition</div>
+      <div class="cover-meta right">AI Investing<br>Intelligence</div>
+    </div>
+    <div class="wordmark">The <em>Silicon</em> Brief</div>
+    <div class="wordmark-sub">Where smart money watches AI</div>
+    <div class="issue-display">
+      <div class="issue-line"></div>
+      <div class="issue-text">Issue No. 002</div>
+      <div class="issue-line"></div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="kicker">Market Signal</div>
+    <div class="headline">$65 Billion in One Week: What the Anthropic Pile-On Tells You About the AI Race</div>
+    <div class="deck">Google and Amazon both wrote massive checks to the same AI startup this week. That's not competition — that's a signal about where the real value in AI is consolidating.</div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><span class="stat-num">$65B</span><span class="stat-label">committed to one AI startup in a single week</span></div>
+    <div class="stat"><span class="stat-num">30×</span><span class="stat-label">Anthropic revenue growth in 16 months</span></div>
+    <div class="stat"><span class="stat-num">11.7×</span><span class="stat-label">sales multiple at $350B — cheaper than Nvidia</span></div>
+  </div>
+
+  <div class="body">
+    <p>This week Google committed up to <strong>$40 billion into Anthropic</strong> — $10 billion upfront, $30 billion more tied to performance benchmarks. Two days earlier Amazon announced a <strong>$5 billion investment</strong> with an option for up to $20 billion more. Both deals pegged Anthropic's valuation at <strong>$350 billion.</strong></p>
+
+    <p>Here's what makes this unusual. Google and Amazon are direct competitors — both building their own frontier AI models. Yet both are pouring capital into a third-party AI lab simultaneously. That tells you something important: <strong>even the hyperscalers don't fully trust their own models to win.</strong> They're hedging at scale.</p>
+
+    <div class="callout">
+      <div class="callout-label">The Number That Changes Everything</div>
+      <p>Anthropic's annualized revenue went from $1 billion at end of 2024 to $9 billion at end of 2025 to $30 billion as of early April 2026. That's 30x growth in 16 months. At a $350 billion valuation that's under 12x sales — cheaper on a revenue multiple than Nvidia trades today. Google isn't being generous. It's getting a bargain.</p>
+    </div>
+
+    <div class="section-head">What this means for your portfolio</div>
+
+    <p>The obvious read is Alphabet and Amazon as buys — both now have massive leveraged exposure to what may be the fastest-growing revenue story in tech history. But the more interesting signal is what this does to the <strong>rest of the AI stack.</strong></p>
+
+    <p>When two hyperscalers commit this much compute and capital to one model provider, it creates a gravitational pull. Enterprises building on AI will increasingly default to the models backed by the infrastructure they already use. That's a moat being built in real time — and it narrows the field for everyone else.</p>
+
+    <div class="signal-grid">
+      <div class="signal">
+        <div class="signal-tag">Buy Signal</div>
+        <p>Alphabet (GOOGL) and Amazon (AMZN) — both now have performance-linked upside in Anthropic's growth at below-market multiples, plus compute revenue from the deal itself.</p>
+      </div>
+      <div class="signal red">
+        <div class="signal-tag">Caution</div>
+        <p>Mid-tier AI model companies with no hyperscaler backing. This week's deals make the rich richer. The moat between top-3 and everyone else just got wider.</p>
+      </div>
+      <div class="signal">
+        <div class="signal-tag">Watch For</div>
+        <p>Anthropic IPO timing. The tender offer to employees at $350B signals they're prepping. If they IPO at $500B+ later this year, Google's entry looks genius in hindsight.</p>
+      </div>
+      <div class="signal red">
+        <div class="signal-tag">Red Flag</div>
+        <p>The $30B from Google is performance-contingent. If Anthropic misses benchmarks, the deal shrinks significantly. Don't model the full $65B as guaranteed.</p>
+      </div>
+    </div>
+
+    <div class="section-head">The metric to track</div>
+
+    <p>Watch <strong>Anthropic's annualized revenue at each earnings cycle</strong> for Google and Amazon. Both companies will now report Anthropic-related metrics. If revenue growth holds above 20x year-over-year, the $350B valuation looks cheap and both stocks benefit. If growth decelerates, the $30B contingent tranche from Google may never land — and the narrative shifts fast.</p>
+
+    <div class="bottom-line">
+      <div class="bottom-line-label">The Bottom Line</div>
+      <p>$65 billion in a week isn't irrational exuberance — it's two of the most sophisticated capital allocators on the planet making a calculated bet that Anthropic is undervalued at $350 billion. The 30x revenue growth in 16 months gives them the data to back it up. For investors, the trade isn't Anthropic — it's the companies that just bought leveraged exposure to it at a discount.</p>
+    </div>
+
+    <div class="signals-section">
+      <div class="signals-label">This Week's Signals</div>
+      <div class="signal-bullet">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text"><strong>AMD up 45% in April</strong> — MI450 GPU gaining real traction with Meta and OpenAI. Anthropic reportedly becoming a customer too. The Nvidia alternative trade is no longer theoretical.</div>
+      </div>
+      <div class="signal-bullet">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text"><strong>China blocks Meta's $2B Manus acquisition</strong> — Beijing told Meta to unwind its deal for the Singapore-based AI agent startup. US-China AI decoupling is accelerating into the M&A layer.</div>
+      </div>
+      <div class="signal-bullet">
+        <div class="bullet-dot"></div>
+        <div class="bullet-text"><strong>ServiceNow Q1 revenue up 22% YoY to $3.8B</strong> — AI agent adoption in enterprise software is real and compounding. Enterprise AI is no longer a promise — it's in the P&L.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-left">THE SILICON BRIEF — ISSUE 002<br>© 2026 · AI INVESTING INTELLIGENCE</div>
+    <a class="footer-link" href="https://whop.com/checkout/plan_xu4IB2UsllMEx">SUBSCRIBE FREE →</a>
+  </div>
+
+</div>
+</body>
+</html>
